@@ -1,4 +1,3 @@
-
 import pygame
 import random
 
@@ -30,6 +29,11 @@ velocidade_obstaculo = 5
 intervalo_criacao_obstaculo = 100
 ultimo_tempo_criacao_obstaculo = pygame.time.get_ticks()
 
+# Variáveis para o pulo prolongado
+espaco_pressionado = False
+tempo_no_ar = 0
+tempo_maximo_no_ar = 10000  # 10 segundos em milissegundos
+
 # Função para criar obstáculos
 def criar_obstaculo():
     tamanho = random.randint(20, 50)
@@ -56,9 +60,18 @@ while executando:
         if evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_SPACE and posicao_y_jogador == ALTURA - tamanho_jogador - 50:
                 velocidade_y_jogador = forca_pulo
+                espaco_pressionado = True
+                tempo_no_ar = tempo_atual
+        if evento.type == pygame.KEYUP:
+            if evento.key == pygame.K_SPACE:
+                espaco_pressionado = False
 
     # Atualização do jogador
-    velocidade_y_jogador += gravidade
+    if espaco_pressionado and (tempo_atual - tempo_no_ar) < tempo_maximo_no_ar:
+        velocidade_y_jogador = forca_pulo
+    else:
+        velocidade_y_jogador += gravidade
+
     posicao_y_jogador += velocidade_y_jogador
     if posicao_y_jogador >= ALTURA - tamanho_jogador - 50:
         posicao_y_jogador = ALTURA - tamanho_jogador - 50

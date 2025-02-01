@@ -34,20 +34,29 @@ espaco_pressionado = False
 tempo_no_ar = 0
 tempo_maximo_no_ar = 10000  # 10 segundos em milissegundos
 
+# Variáveis para contar obstáculos pulados e aumentar a velocidade
+obstaculos_pulados = 0
+aumento_velocidade = 0.5  # Aumento de velocidade a cada obstáculo pulado
+
+# Fonte para exibir o tempo
+fonte = pygame.font.Font(None, 36)
+
 # Função para criar um obstáculo
 def criar_obstaculo():
-    tamanho = random.randint(20, 50)
+    largura = random.randint(20, 40)  # Largura do retângulo
+    altura = random.randint(50, 150)  # Altura do retângulo
     cor = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
     obstaculo = {
-        'retangulo': pygame.Rect(LARGURA, ALTURA - tamanho - 50, tamanho, tamanho),
+        'retangulo': pygame.Rect(LARGURA, ALTURA - altura - 50, largura, altura),
         'cor': cor,
-        'velocidade': random.randint(3, 8)
+        'velocidade': velocidade_obstaculo + obstaculos_pulados * aumento_velocidade
     }
     return obstaculo
 
 # Loop principal do jogo
 executando = True
 relogio = pygame.time.Clock()
+tempo_inicial = pygame.time.get_ticks()
 
 # Criar o primeiro obstáculo
 obstaculos.append(criar_obstaculo())
@@ -87,6 +96,8 @@ while executando:
             obstaculos.remove(obstaculo)
             # Cria um novo obstáculo quando o anterior sai da tela
             obstaculos.append(criar_obstaculo())
+            # Aumenta a contagem de obstáculos pulados
+            obstaculos_pulados += 1
 
     # Colisão
     retangulo_jogador = pygame.Rect(posicao_x_jogador, posicao_y_jogador, tamanho_jogador, tamanho_jogador)
@@ -96,14 +107,15 @@ while executando:
 
     # Desenho
     janela.fill(AZUL)
-    pygame.draw.rect(janela, VERDE, (0, ALTURA - 50, LARGURA, 50))
-    pygame.draw.rect(janela, PRETO, (posicao_x_jogador, posicao_y_jogador, tamanho_jogador, tamanho_jogador))
+    pygame.draw.rect(janela, VERDE, (0, ALTURA - 50, LARGURA, 50))  # Chão
+    pygame.draw.rect(janela, PRETO, (posicao_x_jogador, posicao_y_jogador, tamanho_jogador, tamanho_jogador))  # Jogador
     for obstaculo in obstaculos:
-        pygame.draw.polygon(janela, obstaculo['cor'], [
-            (obstaculo['retangulo'].x, obstaculo['retangulo'].y + obstaculo['retangulo'].height),
-            (obstaculo['retangulo'].x + obstaculo['retangulo'].width / 2, obstaculo['retangulo'].y),
-            (obstaculo['retangulo'].x + obstaculo['retangulo'].width, obstaculo['retangulo'].y + obstaculo['retangulo'].height)
-        ])
+        pygame.draw.rect(janela, obstaculo['cor'], obstaculo['retangulo'])  # Obstáculo
+
+    # Exibir o tempo no canto superior esquerdo
+    tempo_decorrido = (tempo_atual - tempo_inicial) // 1000  # Tempo em segundos
+    texto_tempo = fonte.render(f"Tempo: {tempo_decorrido}", True, BRANCO)
+    janela.blit(texto_tempo, (10, 10))
 
     pygame.display.flip()
 

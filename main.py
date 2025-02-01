@@ -24,7 +24,7 @@ gravidade = 1
 forca_pulo = -15
 
 # Configurações dos obstáculos
-obstaculos = []
+obstaculos = []  # Lista para armazenar o obstáculo atual
 velocidade_obstaculo = 5
 intervalo_criacao_obstaculo = 100
 ultimo_tempo_criacao_obstaculo = pygame.time.get_ticks()
@@ -34,7 +34,7 @@ espaco_pressionado = False
 tempo_no_ar = 0
 tempo_maximo_no_ar = 10000  # 10 segundos em milissegundos
 
-# Função para criar obstáculos
+# Função para criar um obstáculo
 def criar_obstaculo():
     tamanho = random.randint(20, 50)
     cor = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
@@ -43,11 +43,14 @@ def criar_obstaculo():
         'cor': cor,
         'velocidade': random.randint(3, 8)
     }
-    obstaculos.append(obstaculo)
+    return obstaculo
 
 # Loop principal do jogo
 executando = True
 relogio = pygame.time.Clock()
+
+# Criar o primeiro obstáculo
+obstaculos.append(criar_obstaculo())
 
 while executando:
     relogio.tick(60)
@@ -78,14 +81,12 @@ while executando:
         velocidade_y_jogador = 0
 
     # Atualização dos obstáculos
-    if tempo_atual - ultimo_tempo_criacao_obstaculo > intervalo_criacao_obstaculo:
-        criar_obstaculo()
-        ultimo_tempo_criacao_obstaculo = tempo_atual
-
     for obstaculo in obstaculos:
         obstaculo['retangulo'].x -= obstaculo['velocidade']
         if obstaculo['retangulo'].x + obstaculo['retangulo'].width < 0:
             obstaculos.remove(obstaculo)
+            # Cria um novo obstáculo quando o anterior sai da tela
+            obstaculos.append(criar_obstaculo())
 
     # Colisão
     retangulo_jogador = pygame.Rect(posicao_x_jogador, posicao_y_jogador, tamanho_jogador, tamanho_jogador)

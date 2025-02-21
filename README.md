@@ -139,6 +139,45 @@ footer {
     <title>Layout 2</title>
     <link rel="stylesheet" href="Layout2.css">
     <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+main {
+    padding: 20px;
+}
+.membros-equipe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+}
+.membro {
+    margin: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+    .membro img {
+        border: 2px solid #333
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+.sobre-nos {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+  }
+
         
  body {
      font-family: Arial, sans-serif;
@@ -268,6 +307,75 @@ form {
 
     <footer>
         <p> 2025 - IFRN.</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout 3</title>
+    <link rel="stylesheet" href="layout3.css">
+    <style>
+      .sobre-nos {
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+      }
+      
+      .membros-equipe {
+          display: flex; /* Para alinhar os membros da equipe horizontalmente */
+          justify-content: space-around; /* Para adicionar um espaçamento entre os membros */
+      }
+
+      .membro {
+          margin: 20px; /* Adiciona um espaçamento de 20px ao redor de cada membro */
+      }
+      
+      .membro img {
+          border: 2px solid #333; /* Adiciona uma borda de 2px preta */
+      }
+    </style>
+</head>
+<body>
+    <header>
+            <nav>
+                    <ul>
+                        <li><a href="Interfaces para desenvolvimento.html">Início</a></li>
+                        <li><a href="Layout2.html">Contato</a></li>
+                        <li><a href="layout3.html">Serviços</a></li>
+                        <li><a href="layout4.html">Home</a></li>
+                    </ul>
+                </nav>
+    </header>
+
+    <main class="membros-equipe">
+ 
+      <article class="membro">
+          <img src="mulher-negra.png" alt="Mulher Negra" style="max-width:100%; height:auto;">
+          <h3>Maria</h3>
+          <p>Atendente</p>
+      </article>
+
+      <article class="membro">
+          <img src="tio.png" alt="Tio" style="max-width:100%; height:auto;">
+          <h3>Paulo</h3>
+          <p>Piloto</p>
+      </article>
+      
+   
+    </main>
+    
+    <section class="sobre-nos">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma Empresa de transportes aérios<br> levamos voçe ao seu destino favorito, realizando sonhos e transformando vidas por meio do transporte.</p>
+    </section>
+
+    <footer>
+      <p> 2025 - IFRN</p>
     </footer>
 </body>
 </html>

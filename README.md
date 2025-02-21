@@ -379,3 +379,228 @@ form {
     </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout 4</title>
+    <style>
+    body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+header {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 15px; 
+    text-align:center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+footer { 
+    background-color: #333;
+    color: white;
+    text-align:center; 
+    padding: 10px;
+    background-color: #f1f1f1;
+} 
+.localizacao img { 
+    max-width: 100%;
+    height: auto;
+}
+.formulario-reclamacao label,
+.formulario-reclamacao input,
+.formulario-reclamacao textarea {
+    display: block;
+    margin-bottom: 10px; 
+}
+.formulario-reclamacao input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-images {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footer-images img {
+    width: 150px;
+    height: auto;
+    margin: 0 10px;
+    border-radius: 5px; 
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.contact-info p {
+    margin: 5px 0; 
+}
+
+main {
+    padding: 20px;
+    display: flex; 
+    justify-content: space-around; 
+    align-items: flex-start; 
+}
+
+section {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; 
+}
+
+     
+        body {
+            text-align: center;
+        }
+
+    
+        footer {
+            background-color: #333;
+            color: white;
+            
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .footer-images {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-images img {
+            width: 150px;
+            height: auto;
+            margin: 0 10px;
+            border-radius: 5px; 
+        }
+
+        .footer-links {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+      
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .contact-info p {
+            margin: 5px 0; 
+        }
+
+        main {
+            display: flex; 
+            justify-content: space-around; 
+            align-items: flex-start; 
+        }
+
+        section {
+            width: 45%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Encontre-nos ou Reclame Aqui</h1>
+        <nav>
+                <ul>
+                    <li><a href="Interfaces para desenvolvimento.html">Início</a></li>
+                    <li><a href="Layout2.html">Contato</a></li>
+                    <li><a href="layout3.html">Serviços</a></li>
+                    <li><a href="layout4.html">Home</a></li>
+                </ul>
+            </nav>
+    </header>
+    <main>
+        <section class="localizacao">
+            <h2>Nossa Localização</h2>
+            <img src="mapa.png" alt="Mapa da Nossa Localização">
+            <p>Nós estamos localizados na Rua do IFRN, 123 - Centro, Cidade/NATAL</p>
+        </section>
+
+        <section class="reclamacao">
+            <h2>Reclamações</h2>
+            <img src="reclamar.png" alt="Ícone de Reclamação">
+            <form class="formulario-reclamacao" action="#" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+                <input type="submit" value="Enviar Reclamação">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-images">
+            <img src="LAYOUT1.jpg" alt="Imagem de praia">
+            <img src="LAYOUT2.jpg" alt="Imagem dos Lençóis Maranhenses">
+            <img src="LAYOUT3.jpg" alt="Imagem de montanha">
+            <img src="LAYOUT4.jpg" alt="Imagem de balão">
+        </div>
+        <div class="contact-info">
+            <p>Entre em contato conosco:</p>
+            <p>Email: contato@transportesaereos.com</p>
+            <p>Telefone: (84) 99999-9999</p>
+        </div>
+       
+        <p>2025 - IFRN.</p>
+    </footer>
+</body>
+</html>
+
